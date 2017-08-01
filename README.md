@@ -33,7 +33,7 @@ $ npm start
 $ npm test
 ```
 
-## Para fazer o buld do projeto, por rodar o comando
+## Para fazer o build do projeto, por rodar o comando
 ```sh
 $ npm run build
 ```
