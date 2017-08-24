@@ -1,8 +1,16 @@
 'user strict';
 
+import { buildForm } from '../helpers/PrepareRenderInput';
+
 class View {
   constructor(elem = '') {
     this._elem = elem;
+  }
+
+  prepare(model) {
+    return model.map((item, i) => {
+      return buildForm(item);
+    }).join('');
   }
 
   template(model) {

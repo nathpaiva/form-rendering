@@ -1,17 +1,10 @@
 'user strict';
 
 import View from './View';
-import { buildForm } from '../helpers/PrepareRenderInput';
 
 class FormView extends View {
   constructor(elem) {
     super(elem);
-  }
-
-  prepare(model) {
-    return model.map((item, i) => {
-      return buildForm(item);
-    }).join('');
   }
 
   template(model) {

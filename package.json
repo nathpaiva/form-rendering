@@ -7,7 +7,7 @@
     "start": "node webpack-start.js",
     "build": "cross-env NODE_ENV=production BABEL_ENV=production webpack --progress --config webpack/prod.config -p",
     "test": " mocha --compilers js:babel-core/register ./test/*.spec.js",
-    "test:w": "mocha --watch --compilers js:babel-core/register ./test/*.spec.js "
+    "test:tdd": "mocha --watch --compilers js:babel-core/register ./test/*.spec.js "
   },
   "keywords": [
     "Javascrit",
