@@ -1,4 +1,4 @@
-'user strict';
+'use strict';
 
 function RequestService(env) {
   let url = '../../fields.json';

@@ -1,4 +1,4 @@
-'user strict';
+'use strict';
 
 import FormController from './controller/FormController';
 import './scss/style.scss';

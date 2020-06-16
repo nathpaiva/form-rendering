@@ -1,4 +1,4 @@
-'user strict';
+'use strict';
 
 import RequestService from '../services/RequestService';
 import FormView from '../views/FormView';

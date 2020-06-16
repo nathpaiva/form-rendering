@@ -1,4 +1,4 @@
-'user strict';
+'use strict';
 
 export function buildForm(item) {
   if (item.type === 'enumerable' && item.allow_multiple_value) {

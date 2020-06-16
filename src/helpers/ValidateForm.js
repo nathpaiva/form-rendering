@@ -1,4 +1,4 @@
-'user strict';
+'use strict';
 
 function validationForm(elem) {
   const formId = elem.dataset.form;

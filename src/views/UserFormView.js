@@ -1,4 +1,4 @@
-'user strict';
+'use strict';
 
 import View from './View';
 
@@ -10,7 +10,7 @@ class UserFormView extends View {
   template(model) {
     return model ?
       `<div class="forms__description">
-          <img src="./public/images/phone_call.svg" alt="Cabeleireiro">          
+          <img src="./public/images/phone_call.svg" alt="Cabeleireiro">
           <h2>Estamos quase lá</h2>
           <h3>Não perca tempo ligando para vários profissionais. Preencha os dados abaixo e <strong>nós encontraremos os melhores pra você!</strong></h3>
           ${this.prepare(model)}
