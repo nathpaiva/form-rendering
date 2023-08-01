@@ -8,7 +8,7 @@ export type CommonFields = {
 
 type EnumerableType = {
   type: 'enumerable'
-  values: {[key in string]: string}
+  values: { [key in string]: string }
   allow_multiple_value?: boolean
   allow_custom_value?: boolean
   _embedded?: any
@@ -21,8 +21,8 @@ export type RequestFields = Omit<CommonFields, 'type'> & EnumerableType
 export type UserFields = CommonFields
 
 export type DataResponse = {
-  request_fields: RequestFields[], user_fields: UserFields[]
+  request_fields: RequestFields[]
+  user_fields: UserFields[]
 } | null
-
 
 export type ModelType = RequestFields[] | UserFields[]

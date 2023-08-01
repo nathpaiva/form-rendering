@@ -1,19 +1,18 @@
-import { FormController } from './controller';
-import './scss/style.scss';
+import { FormController } from './controller'
+import './scss/style.scss'
 
 interface InitialFormInterface {
-  startCreateForm: () => void;
+  startCreateForm: () => void
 }
 
 const initialForm: InitialFormInterface = {
   startCreateForm: () => {
-    const formControllerStart = new FormController();
+    const formControllerStart = new FormController()
 
-    formControllerStart.createForm();
-  }
-};
+    formControllerStart.createForm()
+  },
+}
 
-
-window.addEventListener("DOMContentLoaded", () => {
-  initialForm.startCreateForm();
-});
+window.addEventListener('DOMContentLoaded', () => {
+  initialForm.startCreateForm()
+})

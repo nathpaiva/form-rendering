@@ -1,9 +1,9 @@
-import { ModelType } from '../types';
-import View from './View';
+import { ModelType } from '../types'
+import View from './View'
 
 class UserFormView extends View {
   constructor(elem: HTMLElement) {
-    super(elem);
+    super(elem)
   }
 
   template(model?: ModelType) {
@@ -22,5 +22,4 @@ class UserFormView extends View {
   }
 }
 
-export default UserFormView;
-
+export default UserFormView

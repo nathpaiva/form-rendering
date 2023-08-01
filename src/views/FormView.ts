@@ -1,13 +1,13 @@
-import { ModelType } from '../types';
-import View from './View';
+import { ModelType } from '../types'
+import View from './View'
 
 class FormView extends View {
   constructor(elem: HTMLElement) {
-    super(elem);
+    super(elem)
   }
 
   template(model?: ModelType) {
-    if(!model) return 'Não existe formulário para ser apresentar.'
+    if (!model) return 'Não existe formulário para ser apresentar.'
 
     return `
       <div class="forms__title">
@@ -18,8 +18,8 @@ class FormView extends View {
       <div class="forms__action">
         <button type="button" id="button-next" data-form="form-for-service" title="Buscar Profissionais" class="button button--primary">Buscar Profissionais</button>
       </div>
-      `;
+      `
   }
 }
 
-export default FormView;
+export default FormView

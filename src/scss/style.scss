@@ -7,7 +7,7 @@
 
 body {
   height: 100%;
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   font-weight: 400;
 }
 
@@ -19,10 +19,10 @@ input,
 select,
 textarea {
   padding: 10px;
-  color: #1393F6;
-  border: 1px solid rgba(19,147,246,.5);
+  color: #1393f6;
+  border: 1px solid rgba(19, 147, 246, 0.5);
   border-radius: 6px;
-  background-color: #EFF4FA;
+  background-color: #eff4fa;
 }
 
 select {
@@ -38,7 +38,7 @@ small {
   font-size: 10px;
   font-style: normal;
   margin-top: 4px;
-  color: #1393F6;
+  color: #1393f6;
 }
 
 .container {
@@ -50,8 +50,8 @@ small {
 .header {
   display: flex;
   flex-direction: column;
-  background-color: #F9F9F9;
-  border-bottom: 1px solid rgba(51,51,51,.15);
+  background-color: #f9f9f9;
+  border-bottom: 1px solid rgba(51, 51, 51, 0.15);
 }
 
 .nav {
@@ -75,11 +75,11 @@ small {
     font-weight: 700;
     font-size: 20px;
     letter-spacing: 1px;
-    line-height: .8;
+    line-height: 0.8;
     margin-top: 2px;
     small {
       -webkit-font-smoothing: antialiased;
-      color: #536E7B;
+      color: #536e7b;
       text-transform: uppercase;
     }
   }
@@ -98,9 +98,9 @@ small {
   &__content {
     -webkit-font-smoothing: antialiased;
     > h1 {
-      color: #536E7B;
+      color: #536e7b;
       font-size: 48px;
-      @media screen and (max-width : 960px) {
+      @media screen and (max-width: 960px) {
         font-size: 30px;
       }
     }
@@ -110,7 +110,7 @@ small {
       margin-bottom: 95px;
       margin-top: 9px;
       font-weight: inherit;
-      @media screen and (max-width : 960px) {
+      @media screen and (max-width: 960px) {
         font-size: 24px;
       }
     }
@@ -120,7 +120,7 @@ small {
     width: 360px;
     width: 360px;
     position: relative;
-    @media screen and (max-width : 960px) {
+    @media screen and (max-width: 960px) {
       display: none;
     }
 
@@ -133,7 +133,6 @@ small {
     margin-left: auto;
   }
 }
-
 
 main {
   display: flex;
@@ -162,7 +161,7 @@ ul {
       font-style: italic;
     }
     &--blue {
-      color: #1393F6;
+      color: #1393f6;
     }
   }
 }
@@ -171,7 +170,7 @@ ul {
   width: 100%;
   border-radius: 5px;
   text-transform: uppercase;
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   cursor: pointer;
   border: none;
   padding: 15px 20px;
@@ -180,10 +179,10 @@ ul {
     display: none;
   }
   &--primary {
-    background-color: #1393F6;
+    background-color: #1393f6;
     color: white;
     &:hover {
-      background-color: #1272D5;
+      background-color: #1272d5;
     }
   }
 }
@@ -193,7 +192,7 @@ ul {
   width: 100%;
   max-width: 548px;
   flex-direction: column;
-  border: 1px solid rgba(51,51,51,.15);
+  border: 1px solid rgba(51, 51, 51, 0.15);
   border-radius: 7px;
   margin: 0 auto;
   overflow: hidden;
@@ -201,7 +200,7 @@ ul {
   background-color: white;
   position: relative;
   z-index: 9;
-  @media screen and (max-width : 960px) {
+  @media screen and (max-width: 960px) {
     margin-top: -59px;
   }
   &__title {
@@ -212,7 +211,7 @@ ul {
     justify-content: center;
     align-items: center;
     margin: auto auto 35px;
-    border-bottom: 2px solid rgba(19, 147, 246, .2);
+    border-bottom: 2px solid rgba(19, 147, 246, 0.2);
   }
   &__description {
     margin-bottom: 20px;
@@ -221,7 +220,7 @@ ul {
       margin: 20px auto;
     }
     > h2 {
-      color: #536E7B;
+      color: #536e7b;
       font-size: 20px;
       font-style: italic;
       font-weight: 900;
@@ -230,7 +229,7 @@ ul {
     }
     > h3 {
       margin-bottom: 16px;
-      color: rgba(0,0,0,.8);
+      color: rgba(0, 0, 0, 0.8);
       font-size: 14px;
       margin-top: 15px;
       text-align: left;
@@ -258,7 +257,7 @@ ul {
       text-align: center;
       padding: 70px;
       font-size: 30px;
-      color: #536E7B;
+      color: #536e7b;
     }
   }
   &__fields {
@@ -286,37 +285,37 @@ ul {
       z-index: 1;
       opacity: 0;
       &:checked ~ label::before {
-        color: #FFFFFF;
-        background-color: #1393F6;
+        color: #ffffff;
+        background-color: #1393f6;
         background-repeat: no-repeat;
         background-position: center center;
-        content: "\2713";
+        content: '\2713';
       }
     }
     > label {
       display: -webkit-box;
       display: -webkit-flex;
-      display:    -moz-flex;
+      display: -moz-flex;
       display: -ms-flexbox;
-      display:    -moz-box;
-      display:         flex;
+      display: -moz-box;
+      display: flex;
       margin-left: 11px;
       -webkit-box-align: center;
       -webkit-align-items: center;
-         -moz-box-align: center;
+      -moz-box-align: center;
       -ms-flex-align: center;
-              align-items: center;
+      align-items: center;
       font-size: 14px;
-      color: rgba(51,51,51,.6);
+      color: rgba(51, 51, 51, 0.6);
       &::before {
         width: 18px;
         height: 18px;
         position: absolute;
         left: 0;
-        box-shadow: inset 0 0 0 1px rgba(83,110,123,.3);
+        box-shadow: inset 0 0 0 1px rgba(83, 110, 123, 0.3);
         border-radius: 4px;
-        background-color: #EFF4FA;
-        content: "";
+        background-color: #eff4fa;
+        content: '';
         text-align: center;
       }
     }
@@ -330,7 +329,7 @@ ul {
 .tabs {
   display: flex;
   margin-top: 30px;
-  background-color: #E7E7E7;
+  background-color: #e7e7e7;
   color: gray;
   &__item {
     display: flex;
@@ -341,7 +340,7 @@ ul {
     border-radius: 0 0 5px 5px;
     font-size: 12px;
     &--active {
-      color: #536E7B;
+      color: #536e7b;
       background-color: white;
     }
   }
@@ -351,8 +350,8 @@ ul {
   height: 0;
   opacity: 0;
   overflow: hidden;
-  color: #C51010;
-  transition: opacity .5s ease-in-out;
+  color: #c51010;
+  transition: opacity 0.5s ease-in-out;
   &.show {
     height: inherit;
     opacity: 1;
@@ -366,7 +365,7 @@ ul {
   &__nav {
     display: flex;
     height: 60px;
-    background-color: rgba(51,51,51,.9);
+    background-color: rgba(51, 51, 51, 0.9);
     justify-content: center;
   }
 
@@ -390,10 +389,10 @@ ul {
       color: lightgray;
       margin-bottom: 20px;
       > p {
-        color: rgba(255,255,255,.5);
+        color: rgba(255, 255, 255, 0.5);
       }
       > address {
-        color: rgba(255,255,255,.5);
+        color: rgba(255, 255, 255, 0.5);
       }
     }
   }
@@ -415,7 +414,6 @@ ul {
     }
   }
 }
-
 
 .hide {
   display: none;
