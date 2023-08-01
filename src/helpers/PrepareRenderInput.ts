@@ -1,6 +1,6 @@
-'use strict';
+import { RequestFields, UserFields } from "../types";
 
-export function buildForm(item) {
+export function buildForm(item: RequestFields | UserFields) {
   if (item.type === 'enumerable' && item.allow_multiple_value) {
     return inputCheckBox(item);
   } else if (item.type === 'enumerable' && !item.allow_multiple_value) {
@@ -10,7 +10,7 @@ export function buildForm(item) {
   }
 }
 
-function _prepareInput(item) {
+function _prepareInput(item: RequestFields | UserFields) {
   if (item.type === 'big_text') {
     return (`<textarea type="textarea" name="${item.label}" placeholder="${item.placeholder}" ${(item.required === true) ? 'class="required"' : ''}/></textarea>`)
   } else if (item.type === 'small_text' || item.type === 'lat_lng') {
@@ -20,7 +20,7 @@ function _prepareInput(item) {
   }
 }
 
-export function inputCheckBox(item) {
+export function inputCheckBox(item: RequestFields) {
   return (
     `<div class="forms__fields ${(item.required) ? 'form_required' : ''}">
         <label>${item.label}</label>
@@ -37,7 +37,7 @@ export function inputCheckBox(item) {
   );
 }
 
-export function selectField(item) {
+export function selectField(item: RequestFields) {
   return (`
     <div class="forms__fields ${(item.required) ? 'form_required' : ''}">
         <label for="O serviço será para quantas pessoas?">${item.label}</label>
@@ -50,7 +50,7 @@ export function selectField(item) {
   `);
 }
 
-export function inputText(item) {
+export function inputText(item: RequestFields | UserFields) {
   return (`
     <div class="forms__fields ${(item.required) ? 'form_required' : ''}">
       <label for="${item.name}">${item.label}</label>

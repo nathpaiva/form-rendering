@@ -1,15 +1,19 @@
-'use strict';
-
-function validationForm(elem) {
+function validationForm(elem: HTMLElement) {
   const formId = elem.dataset.form;
+
+  if(!formId) return;
+
   const form = document.getElementById(formId);
+
+  if(!form) return;
+
   const formR = form.getElementsByClassName('form_required');
 
-  if (formR.length === 0) retun;
+  if (formR.length === 0) return;
 
   let countValid = formR.length;
   for (let x = 0; x < formR.length; x++) {
-    const input = formR[x].getElementsByClassName('required');
+    const input: any = formR[x].getElementsByClassName('required');
 
     if (input.length > 0) {
       let i = 0;
@@ -51,14 +55,15 @@ function validationForm(elem) {
     if (x + 1 === formR.length && countValid === 0) {
       if (formId === 'form-for-service') {
         form.classList.add('forms__content--hide');
-        form.nextSibling.nextSibling.classList.remove('forms__content--hide');
+        (form.nextSibling?.nextSibling as any)?.classList.remove('forms__content--hide');
       } else {
-        form.nextSibling.nextSibling.classList.remove('hide');
+        (form.nextSibling?.nextSibling as any)?.classList.remove('hide');
         form.classList.add('forms__content--hide');
       }
 
-      if (formId !== 'form-for-service') return
-      let tabsItem = document.querySelector('.tabs').children;
+      if (formId !== 'form-for-service' || !document) return
+
+      let tabsItem: any = document.querySelector('.tabs')?.children;
 
       for (var i = 0; i < tabsItem.length; i++) {
         if (tabsItem[i].classList.contains('tabs__item--active')) {
