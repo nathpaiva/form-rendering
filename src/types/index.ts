@@ -11,7 +11,9 @@ type EnumerableType = {
   values: { [key in string]: string }
   allow_multiple_value?: boolean
   allow_custom_value?: boolean
-  _embedded?: any
+  _embedded?: {
+    nested_fields: any[]
+  }
   reference?: null | string
   mask?: string
 }
