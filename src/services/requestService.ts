@@ -1,6 +1,6 @@
 import { DataResponse } from '../types'
 
-async function RequestService(): Promise<DataResponse> {
+export async function requestService(): Promise<DataResponse> {
   try {
     const response = await fetch('../../fields.json')
     const data = await response.json()
@@ -12,5 +12,3 @@ async function RequestService(): Promise<DataResponse> {
     return null
   }
 }
-
-export default RequestService

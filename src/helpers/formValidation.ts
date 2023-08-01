@@ -1,4 +1,4 @@
-function validationForm(elem: HTMLElement) {
+export function formValidation(elem: HTMLElement) {
   const formId = elem.dataset.form
 
   if (!formId) return
@@ -99,5 +99,3 @@ function validationForm(elem: HTMLElement) {
     }
   }
 }
-
-export default validationForm

@@ -1,16 +1,25 @@
-import ValidateForm from '../helpers/ValidateForm'
-import RequestService from '../services/RequestService'
+import { formValidation } from '../helpers'
+import { requestService } from '../services'
 import { DataResponse } from '../types'
-import FormView from '../views/FormView'
-import UserFormView from '../views/UserFormView'
-import { ViewInterface } from '../views/View'
+import { FormView, UserFormView, type ViewInterface } from '../views'
 
-export class FormController {
+interface IFormController {
   _serviceForm: HTMLElement | null
   _userForm: HTMLElement | null
   _dataRequest: DataResponse
-  _serviceFormView: null | ViewInterface
-  _userFormView: null | ViewInterface
+  _serviceFormView: ViewInterface | null
+  _userFormView: ViewInterface | null
+  submitForm: (elem: HTMLElement) => void
+  createForm: () => void
+  render: () => void
+}
+
+export class FormController implements IFormController {
+  _serviceForm: HTMLElement | null
+  _userForm: HTMLElement | null
+  _dataRequest: DataResponse
+  _serviceFormView: ViewInterface | null
+  _userFormView: ViewInterface | null
 
   constructor() {
     // create a reference to get the elements
@@ -33,11 +42,11 @@ export class FormController {
   }
 
   submitForm(elem: HTMLElement) {
-    ValidateForm(elem)
+    formValidation(elem)
   }
 
   async createForm() {
-    const data = await RequestService()
+    const data = await requestService()
 
     this._dataRequest = data
     this.render()

@@ -1,12 +1,6 @@
-import { buildForm } from '../helpers/PrepareRenderInput'
+import { buildForm } from '../helpers'
 import { ModelType } from '../types'
-
-export interface ViewInterface {
-  _elem: HTMLElement
-  prepare: (model: ModelType) => string
-  template: (model?: ModelType) => string
-  update: (model: ModelType) => void
-}
+import { ViewInterface } from './types'
 
 class View implements ViewInterface {
   _elem: HTMLElement
@@ -15,8 +9,34 @@ class View implements ViewInterface {
     this._elem = elem
   }
 
-  prepare(model: ModelType) {
+  createForm(model: ModelType) {
     return model.map((item) => buildForm(item)).join('')
+  }
+
+  fallbackMessage() {
+    return 'Has no form to render.'
+  }
+
+  buildAction({
+    buttonLabel,
+    dataForm,
+  }: {
+    buttonLabel: string
+    dataForm: 'form-for-user' | 'form-for-service'
+  }) {
+    return `
+      <div class="forms__action">
+        <button
+          type="button"
+
+          data-form="${dataForm}"
+          title="${buttonLabel}"
+          class="button button--primary"
+        >
+          ${buttonLabel}
+        </button>
+      </div>
+    `
   }
 
   // TODO change this method
