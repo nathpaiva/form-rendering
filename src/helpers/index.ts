@@ -1,2 +1,2 @@
-export * from './PrepareRenderInput'
+export * from './prepareRenderInput'
 export * from './formValidation'
