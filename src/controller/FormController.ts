@@ -49,18 +49,20 @@ export class FormController {
       return
 
     this._serviceFormView.update(this._dataRequest.request_fields)
-    this._userFormView.update(this._dataRequest.user_fields)
 
-    const buttons = document.getElementsByTagName('button')
-    const self = this
-    for (let i = 0; i < buttons.length; i++) {
-      buttons[i].addEventListener(
-        'click',
-        function () {
-          self.submitForm(this)
-        },
-        false,
-      )
-    }
+    this._userFormView.update(this._dataRequest.user_fields)
+    ;(function (self) {
+      const buttons = document.getElementsByTagName('button')
+
+      for (let i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener(
+          'click',
+          function () {
+            self.submitForm(this)
+          },
+          false,
+        )
+      }
+    })(this)
   }
 }
