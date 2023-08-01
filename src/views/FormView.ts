@@ -17,7 +17,7 @@ export class FormView extends View {
 
       ${this.createForm(model)}
 
-      ${this.buildAction({
+      ${this.templateAction({
         buttonLabel: 'Buscar Profissionais',
         dataForm: 'form-for-service',
       })}

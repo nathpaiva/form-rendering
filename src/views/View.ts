@@ -9,15 +9,15 @@ class View implements ViewInterface {
     this._elem = elem
   }
 
-  createForm(model: ModelType) {
-    return model.map((item) => buildForm(item)).join('')
-  }
-
   fallbackMessage() {
     return 'Has no form to render.'
   }
 
-  buildAction({
+  createForm(model: ModelType) {
+    return model.map((item) => buildForm(item)).join('')
+  }
+
+  templateAction({
     buttonLabel,
     dataForm,
   }: {
@@ -28,7 +28,6 @@ class View implements ViewInterface {
       <div class="forms__action">
         <button
           type="button"
-
           data-form="${dataForm}"
           title="${buttonLabel}"
           class="button button--primary"

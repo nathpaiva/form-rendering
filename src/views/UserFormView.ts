@@ -21,7 +21,7 @@ export class UserFormView extends View {
         ${this.createForm(model)}
       </div>
 
-      ${this.buildAction({
+      ${this.templateAction({
         buttonLabel: 'Finalizar',
         dataForm: 'form-for-user',
       })}

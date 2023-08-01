@@ -6,7 +6,7 @@ export interface ViewInterface {
   template: (model?: ModelType) => string
   update: (model: ModelType) => void
   fallbackMessage: () => void
-  buildAction: (params: {
+  templateAction: (params: {
     buttonLabel: string
     dataForm: 'form-for-user' | 'form-for-service'
   }) => string
