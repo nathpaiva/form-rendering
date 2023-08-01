@@ -1,98 +1,135 @@
 import { RequestFields, UserFields } from '../types'
 
-export function buildForm(item: RequestFields | UserFields) {
-  if (item.type === 'enumerable' && item.allow_multiple_value) {
-    return inputCheckBox(item)
-  } else if (item.type === 'enumerable' && !item.allow_multiple_value) {
-    return selectField(item)
-  } else {
-    return inputText(item)
+type TPrepareInputText =
+  | Pick<RequestFields, 'type' | 'label' | 'name' | 'placeholder' | 'required'>
+  | Pick<UserFields, 'type' | 'label' | 'name' | 'placeholder' | 'required'>
+
+function _prepareInputText({
+  type,
+  label,
+  name,
+  placeholder,
+  required,
+}: TPrepareInputText) {
+  const inputClassName = required ? 'class="required"' : ''
+  const inputType = type === 'lat_lng' || type === 'small_text' ? 'text' : type
+
+  // if is a big text, return a textarea
+  if (inputType === 'big_text') {
+    return `<textarea type="textarea" name="${label}" placeholder="${placeholder}" ${inputClassName}/></textarea>`
   }
+
+  return `<input type="${inputType}" name="${name}" id="${name}" placeholder="${placeholder}" ${inputClassName}/>`
 }
 
-function _prepareInput(item: RequestFields | UserFields) {
-  if (item.type === 'big_text') {
-    return `<textarea type="textarea" name="${item.label}" placeholder="${
-      item.placeholder
-    }" ${item.required === true ? 'class="required"' : ''}/></textarea>`
-  } else if (item.type === 'small_text' || item.type === 'lat_lng') {
-    return `<input type="text" name="${item.name}" id="${
-      item.name
-    }" placeholder="${item.placeholder}" ${
-      item.required === true ? 'class="required"' : ''
-    }/>`
-  } else {
-    return `<input type="${item.type}" name="${item.name}" id="${
-      item.name
-    }" placeholder="${item.placeholder}" ${
-      item.required === true ? 'class="required"' : ''
-    }/>`
-  }
+type TErrorMessage = {
+  message: string
+  required: boolean
 }
 
-export function inputCheckBox(item: RequestFields) {
-  return `<div class="forms__fields ${item.required ? 'form_required' : ''}">
-        <label>${item.label}</label>
-        <ul class="forms__inputs">
-          ${Object.keys(item.values)
-            .map(
-              (objectKey, index) => `
+function _errorMessage({ message, required }: TErrorMessage): string {
+  return required
+    ? `<span class="message message--error">${message}</span>`
+    : ''
+}
+
+export function inputText({
+  required,
+  name,
+  label,
+  placeholder,
+  type,
+}: RequestFields | UserFields) {
+  const formFieldsClassName = required ? 'form_required' : ''
+
+  return `
+    <div class="forms__fields ${formFieldsClassName}">
+      <label for="${name}">${label}</label>
+
+      ${_prepareInputText({
+        required,
+        name,
+        label,
+        placeholder,
+        type,
+      })}
+
+      ${_errorMessage({ message: 'Este campo é requerido.', required })}
+    </div>
+  `
+}
+
+export function inputCheckBox({ values, label, required }: RequestFields) {
+  const formFieldsClassName = required ? 'form_required' : ''
+
+  return `
+    <div class="forms__fields ${formFieldsClassName}">
+      <label>${label}</label>
+
+      <ul class="forms__inputs">
+        ${Object.keys(values)
+          .map((key, index) => {
+            const inputClassName = required ? 'class="required"' : ''
+            const inputReference = `${label}-${index}`
+
+            return `
               <li class="forms__check">
-                  <input type="checkbox" ${
-                    item.required ? 'class="required"' : ''
-                  } name="${item.label}" id="${item.label}-${index}" value="${
-                    item.values[objectKey]
-                  }" />
-                  <label for="${item.label}-${index}">${
-                    item.values[objectKey]
-                  }</label>
+                  <input
+                    type="checkbox"
+                    name="${label}"
+                    id="${inputReference}"
+                    ${inputClassName}
+                    value="${values[key]}"
+                  />
+                  <label for="${inputReference}">${values[key]}</label>
               </li>
-          `,
+            `
+          })
+          .join('')}
+      </ul>
+
+      ${_errorMessage({ message: 'Escolha ao menos uma opção.', required })}
+    </div>
+  `
+}
+
+export function selectField({ required, label, values, mask }: RequestFields) {
+  const formFieldsClassName = required ? 'form_required' : ''
+  const selectClassName = required ? 'required' : ''
+
+  return `
+    <div class="forms__fields ${formFieldsClassName}">
+      <label for="${label}">${label}</label>
+
+      <select
+        id="${label}"
+        name="${label}"
+        class="forms__select ${selectClassName}"
+      >
+          <option value="">${mask}</option>
+
+          ${Object.keys(values)
+            .map(
+              (key, index) =>
+                `<option value="${index}">${values[key]}</option>`,
             )
             .join('')}
-        </ul>
-        ${
-          item.required
-            ? '<span class="message message--error">Escolha ao menos uma opção.</span>'
-            : ''
-        }
-      </div>`
-}
-
-export function selectField(item: RequestFields) {
-  return `
-    <div class="forms__fields ${item.required ? 'form_required' : ''}">
-        <label for="O serviço será para quantas pessoas?">${item.label}</label>
-        <select id="O serviço será para quantas pessoas?" name="O serviço será para quantas pessoas?" class="forms__select ${
-          item.required ? 'required ' : ''
-        }">
-            <option value="">${item.mask}</option>
-            ${Object.keys(item.values)
-              .map(
-                (objectKey, index) =>
-                  `<option value="${index}">${item.values[objectKey]}</option>`,
-              )
-              .join('')}
-        </select>
-        ${
-          item.required
-            ? '<span class="message message--error">Selecione uma opção.</span>'
-            : ''
-        }
+      </select>
+      ${_errorMessage({ message: 'Selecione uma opção.', required })}
     </div>
   `
 }
 
-export function inputText(item: RequestFields | UserFields) {
-  return `
-    <div class="forms__fields ${item.required ? 'form_required' : ''}">
-      <label for="${item.name}">${item.label}</label>
-      ${_prepareInput(item)}
-      ${
-        item.required
-          ? '<span class="message message--error">Este campo é requerido</span>'
-          : ''
-      }
-    </div>
-  `
+export function buildForm(item: RequestFields | UserFields) {
+  const isEnumerable = item.type === 'enumerable'
+
+  if (isEnumerable && item.allow_multiple_value) {
+    return inputCheckBox(item)
+  }
+
+  if (isEnumerable && !item.allow_multiple_value) {
+    return selectField(item)
+  }
+
+  return inputText(item)
 }

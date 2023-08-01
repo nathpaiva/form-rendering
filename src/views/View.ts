@@ -16,11 +16,7 @@ class View implements ViewInterface {
   }
 
   prepare(model: ModelType) {
-    return model
-      .map((item) => {
-        return buildForm(item)
-      })
-      .join('')
+    return model.map((item) => buildForm(item)).join('')
   }
 
   // TODO change this method
