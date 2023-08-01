@@ -19,11 +19,10 @@ class FormController {
     ValidateForm(elem);
   }
 
-  createForm() {
-    RequestService().then(data => {
-      this._dataRequest = data;
-      this.render();
-    });
+  async createForm() {
+    const data = await RequestService()
+    this._dataRequest = data;
+    this.render()
   }
 
   render() {

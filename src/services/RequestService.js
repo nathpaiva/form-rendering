@@ -1,6 +1,6 @@
 'use strict';
 
-function RequestService(env) {
+async function RequestService(env) {
   let url = '../../fields.json';
   if (env) {
     url = 'http://nathpaiva.com.br'
