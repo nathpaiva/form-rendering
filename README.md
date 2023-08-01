@@ -1,4 +1,4 @@
-# Form Redirection with vanilla JS
+# Form rendering with Vanilla JS
 
 ## Project developed with:
 * Javascript

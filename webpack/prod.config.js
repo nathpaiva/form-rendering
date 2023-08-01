@@ -22,7 +22,7 @@ module.exports = {
     }),
 
     new webpack.DefinePlugin({
-      'proccess.env': {
+      'process.env': {
         'NODE_ENV': '"production"'
       }
     }),

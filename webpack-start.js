@@ -1,8 +1,8 @@
 'use strict'
 
-const webpack = require('webpack');
-const WebpackDevServer = require('webpack-dev-server');
-const config = require('./webpack/dev.config');
+import webpack from 'webpack';
+import WebpackDevServer from 'webpack-dev-server';
+import config from './webpack/dev.config';
 
 new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,
@@ -13,6 +13,6 @@ new WebpackDevServer(webpack(config), {
   }
 }).listen(2000, () => {
   console.log('====================================');
-  console.log('Servidor rodando na :2000');
+  console.log('Server running at :2000');
   console.log('====================================');
 });
