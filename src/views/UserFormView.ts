@@ -11,7 +11,7 @@ export class UserFormView extends View {
 
     return `
       <div class="forms__description">
-        <img src="./public/images/phone_call.svg" alt="Cabeleireiro" />
+        <img src="./images/phone_call.svg" alt="Cabeleireiro" />
 
         <h2>Estamos quase lá</h2>
         <h3>
