@@ -1,71 +1,86 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:400,700,900"
+      rel="stylesheet"
+    />
+    <title>GetNinjas</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet">
-  <link rel="stylesheet" href="./public/assets/style.css" media="all" />
-  <title>
-    GetNinjas
-  </title>
-</head>
+  <body>
+    <header class="header">
+      <nav class="nav" role="navigation">
+        <div class="logo container">
+          <div class="logo__icon">
+            <img src="./images/logo-estetica.svg" alt="Estética" />
+          </div>
+          <h1 class="logo__name">
+            <img src="./images/logo-getninjas.svg" alt="GetNinjas" />
+            <small>Estética</small>
+          </h1>
+        </div>
+      </nav>
+      <section class="banner" role="banner">
+        <div class="banner__container container">
+          <div class="banner__content">
+            <h1>Os melhores Cabeleireiros.</h1>
+            <h2>Faça um pedido. Receba orçamentos. Contrate o melhor.</h2>
+          </div>
+          <div class="banner__image">
+            <img src="./images/bg.png" alt="Cabeleireiro" />
+          </div>
+        </div>
+      </section>
+    </header>
+    <main class="container" role="main">
+      <form class="forms" novalidate>
+        <fieldset id="form-for-service" class="forms__content"></fieldset>
+        <fieldset
+          id="form-for-user"
+          class="forms__content forms__content--hide"
+        ></fieldset>
+        <div id="parabens" class="forms__content--congratulation hide">
+          Pedido realizado com sucesso.
+        </div>
+        <div class="tabs">
+          <div class="tabs__item tabs__item--active">1. Seu pedido</div>
+          <div class="tabs__item" data-form="form-for-user">2. Seus dados</div>
+        </div>
+      </form>
+    </main>
 
-<body>
-  <header class="header">
-    <nav class="nav" role="navigation">
-      <div class="logo container">
-        <div class="logo__icon">
-          <img src="./public/images/logo-estetica.svg" alt="Estética">
+    <footer class="footer">
+      <nav class="footer__nav">
+        <ul class="nav-footer" role="menubar">
+          <li a="#" class="nav-footer__item" role="menuitem">
+            <a href="#">Quem Somos</a>
+          </li>
+          <li a="#" class="nav-footer__item" role="menuitem">
+            <a href="#">Guia do GetNinjas</a>
+          </li>
+          <li a="#" class="nav-footer__item" role="menuitem">
+            <a href="#">Ajuda</a>
+          </li>
+          <li a="#" class="nav-footer__item" role="menuitem">
+            <a href="#">Termos de uso</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="footer__copyright">
+        <a href="#" class="brand__name">GetNinjas</a>
+        <div class="copyright">
+          <p>
+            ©2011-2017, GetNinjas Serviços de Internet. CNPJ 14.127.813/0001-51
+            -
+          </p>
+          <address>Av. Rebouças, 2472 - Pinheiros São Paulo - SP</address>
         </div>
-        <h1 class="logo__name">
-          <img src="./public/images/logo-getninjas.svg" alt="GetNinjas">
-          <small>Estética</small>
-        </h1>
       </div>
-    </nav>
-    <section class="banner" role="banner">
-      <div class="banner__container container">
-        <div class="banner__content">
-          <h1>Os melhores Cabeleireiros.</h1>
-          <h2>Faça um pedido. Receba orçamentos. Contrate o melhor.</h2>
-        </div>
-        <div class="banner__image">
-          <img src="./public/images/bg.png" alt="Cabeleireiro">
-        </div>
-      </div>
-    </section>
-  </header>
-  <main class="container" role="main">
-    <form class="forms" novalidate>
-      <fieldset id="form-for-service" class="forms__content"></fieldset>
-      <fieldset id="form-for-user" class="forms__content forms__content--hide"></fieldset>
-      <div id="parabens" class="forms__content--congratulation hide">Pedido realizado com sucesso.</div>
-      <div class="tabs">
-        <div class="tabs__item tabs__item--active">1. Seu pedido</div>
-        <div class="tabs__item" data-form="form-for-user">2. Seus dados</div>
-      </div>
-    </form>
-  </main>
-  <footer class="footer">
-    <nav class="footer__nav">
-      <ul class="nav-footer" role="menubar">
-        <li a="#" class="nav-footer__item" role="menuitem"><a href="#">Quem Somos</a></li>
-        <li a="#" class="nav-footer__item" role="menuitem"><a href="#">Guia do GetNinjas</a></li>
-        <li a="#" class="nav-footer__item" role="menuitem"><a href="#">Ajuda</a></li>
-        <li a="#" class="nav-footer__item" role="menuitem"><a href="#">Termos de uso</a></li>
-      </ul>
-    </nav>
-    <div class="footer__copyright">
-      <a href="#" class="brand__name">GetNinjas</a>
-      <div class="copyright">
-        <p>©2011-2017, GetNinjas Serviços de Internet. CNPJ 14.127.813/0001-51 -</p>
-        <address>Av. Rebouças, 2472 - Pinheiros São Paulo - SP</address>
-      </div>
-    </div>
-  </footer>
-  <script type="text/javascript" src="./public/assets/bundler.js"></script>
-</body>
-
+    </footer>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>
