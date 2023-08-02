@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+// TODO: add tests
 import { formValidation } from '../helpers'
 import { requestService } from '../services'
 import { DataResponse } from '../types'

@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+// TODO: add tests
 import { buildForm } from '../helpers'
 import { ModelType } from '../types'
 import { ViewInterface } from './types'

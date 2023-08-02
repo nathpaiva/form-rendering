@@ -3,23 +3,17 @@
     "request_fields": [
       {
         "reference": null,
-        "name": "Qual será o serviço?",
-        "label": "Qual será o serviço?",
-        "placeholder": "Qual será o serviço?",
-        "mask": "tipo de serviço",
+        "name": "What will be the service?",
+        "label": "What will be the service?",
+        "placeholder": "What will be the service?",
+        "mask": "service type",
         "type": "enumerable",
         "required": true,
         "allow_multiple_value": true,
         "allow_custom_value": false,
         "values": {
-          "Coloração": "Coloração",
-          "Corte": "Corte",
-          "Escova": "Escova",
-          "Escova progressiva/definitiva": "Escova progressiva/definitiva",
-          "Luzes": "Luzes",
-          "Manicure": "Manicure",
-          "Pedicure": "Pedicure",
-          "Penteado": "Penteado"
+          "Dye": "Dye",
+          "Haircut": "Haircut"
         },
         "_embedded": {
           "nested_fields": []
@@ -27,18 +21,18 @@
       },
       {
         "reference": null,
-        "name": "Para quem será o serviço?",
-        "label": "Para quem será o serviço?",
-        "placeholder": "Para quem será o serviço?",
-        "mask": "indique para quem será o serviço",
+        "name": "Who will the service be for?",
+        "label": "Who will the service be for?",
+        "placeholder": "Who will the service be for?",
+        "mask": "who the service will be for",
         "type": "enumerable",
         "required": false,
         "allow_multiple_value": true,
         "allow_custom_value": false,
         "values": {
-          "Criança": "Criança",
-          "Homem": "Homem",
-          "Mulher": "Mulher"
+          "Kids": "Kids",
+          "Man": "Man",
+          "Woman": "Woman"
         },
         "_embedded": {
           "nested_fields": []
@@ -46,10 +40,10 @@
       },
       {
         "reference": null,
-        "name": "O serviço será para quantas pessoas?",
-        "label": "O serviço será para quantas pessoas?",
-        "placeholder": "O serviço será para quantas pessoas?",
-        "mask": "indique o número de pessoas",
+        "name": "How many people will the service be for?",
+        "label": "How many people will the service be for?",
+        "placeholder": "How many people will the service be for?",
+        "mask": "add the number of people",
         "type": "enumerable",
         "required": false,
         "allow_multiple_value": false,
@@ -57,7 +51,7 @@
         "values": {
           "1": "1",
           "2": "2",
-          "Mais de 3": "Mais de 3"
+          "More than 3": "More than 3"
         },
         "_embedded": {
           "nested_fields": []
@@ -65,36 +59,36 @@
       },
       {
         "reference": null,
-        "name": "Para quando você precisa deste serviço?",
-        "label": "Para quando você precisa deste serviço?",
-        "placeholder": "Para quando você precisa deste serviço?",
-        "mask": "Indique o prazo do serviço",
+        "name": "When do you need this service?",
+        "label": "When do you need this service?",
+        "placeholder": "When do you need this service?",
+        "mask": "Add the service deadline",
         "type": "enumerable",
         "required": true,
         "allow_multiple_value": false,
         "allow_custom_value": false,
         "values": {
-          "Hoje ou nos próximos dias": "Hoje ou nos próximos dias",
-          "Nos próximos 30 dias": "Nos próximos 30 dias",
-          "Nos próximos 3 meses": "Nos próximos 3 meses",
-          "Ainda não tenho previsão": "Ainda não tenho previsão"
+          "Today or in the next few days": "Today or in the next few days",
+          "Next 30 days": "Next 30 days",
+          "Next 3 months": "Next 3 months",
+          "Not sure yet": "Not sure yet"
         },
         "_embedded": {
           "nested_fields": []
         }
       },
       {
-        "name": "Informações Adicionais",
-        "label": "Informações Adicionais",
+        "name": "Additional Information",
+        "label": "Additional Information",
         "type": "big_text",
-        "placeholder": "Descreva o que você precisa",
+        "placeholder": "Describe what you need",
         "required": false
       }
     ],
     "user_fields": [
       {
         "name": "lat_lng",
-        "label": "Em que bairro será o serviço?",
+        "label": "Which neighbourhood will the service be in?",
         "type": "lat_lng",
         "placeholder": "",
         "required": true
@@ -115,7 +109,7 @@
       },
       {
         "name": "phone",
-        "label": "Celular",
+        "label": "Cellphone",
         "type": "phone",
         "placeholder": "",
         "required": true
