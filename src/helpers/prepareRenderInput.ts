@@ -105,6 +105,7 @@ export function selectField({ required, label, values, mask }: RequestFields) {
         id="${label}"
         name="${label}"
         class="forms__select ${selectClassName}"
+        data-testid="${label}"
       >
           <option value="">${mask}</option>
 
