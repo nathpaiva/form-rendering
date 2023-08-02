@@ -18,7 +18,8 @@ export function formValidation(elem: HTMLElement) {
 
   if (!requiredSections.length) return
 
-  let countValid = requiredSections.length
+  // if is 0 means that all fields are valid
+  let countValidFields = requiredSections.length
 
   for (let x = 0; x < requiredSections.length; x++) {
     const requiredSection = requiredSections[x]
@@ -30,6 +31,9 @@ export function formValidation(elem: HTMLElement) {
 
     const setStyleToContainerSection = (hasToSetError?: boolean) => {
       const classValue = hasToSetError ? 'show' : 'hide'
+
+      // if has no error, decrement the count
+      if (!hasToSetError) countValidFields--
 
       containerSection.setAttribute(
         'class',
@@ -51,7 +55,6 @@ export function formValidation(elem: HTMLElement) {
             input.type === 'email'
 
           if (!isInputText && input.checked) {
-            countValid--
             isInputFilled = true
             setStyleToContainerSection()
           }
@@ -61,7 +64,6 @@ export function formValidation(elem: HTMLElement) {
           }
 
           if (isInputText && input.value !== '') {
-            countValid--
             isInputFilled = true
             setStyleToContainerSection()
           }
@@ -71,7 +73,6 @@ export function formValidation(elem: HTMLElement) {
           }
         } else {
           if (input.selectedIndex) {
-            countValid--
             isInputFilled = true
             setStyleToContainerSection()
           }
@@ -89,29 +90,45 @@ export function formValidation(elem: HTMLElement) {
       }
     }
 
-    if (x + 1 === requiredSections.length && !countValid) {
-      if (formReference === 'form-for-service') {
-        formFieldset.classList.add('forms__content--hide')
-        ;(formFieldset.nextSibling?.nextSibling as any)?.classList.remove(
-          'forms__content--hide',
-        )
-      } else {
-        ;(formFieldset.nextSibling?.nextSibling as any)?.classList.remove(
-          'hide',
-        )
-        formFieldset.classList.add('forms__content--hide')
+    if (x + 1 === requiredSections.length && !countValidFields) {
+      // get the tabs container
+      const tabsArrayLike = document.querySelector('.tabs')?.children
+      const hasSibling = !!formFieldset.nextElementSibling
+      // check if is the last step
+      const isLastStep =
+        hasSibling && formFieldset.nextElementSibling.tagName === 'DIV'
+
+      const tabsArray = tabsArrayLike ? [...tabsArrayLike] : []
+
+      tabsArray.forEach((item) => {
+        const isActive = item.classList.contains('tabs__item--active')
+        // if is the last step, don't remove the active class
+        if (isLastStep) {
+          return
+        }
+
+        // show the the active tab
+        if (isActive) {
+          item.classList.remove('tabs__item--active')
+        } else {
+          item.classList.add('tabs__item--active')
+        }
+      })
+
+      // hide the current form
+      formFieldset.classList.add('forms__content--hide')
+
+      // show the next form if is a FIELDSET
+      if (
+        hasSibling &&
+        formFieldset.nextElementSibling.tagName === 'FIELDSET'
+      ) {
+        formFieldset.nextElementSibling.classList.remove('forms__content--hide')
       }
 
-      if (formReference !== 'form-for-service' || !document) return
-
-      const tabsItem: any = document.querySelector('.tabs')?.children
-
-      for (let i = 0; i < tabsItem.length; i++) {
-        if (tabsItem[i].classList.contains('tabs__item--active')) {
-          tabsItem[i].classList.remove('tabs__item--active')
-        } else {
-          tabsItem[i].classList.add('tabs__item--active')
-        }
+      // if is the last step, shows the success message
+      if (isLastStep) {
+        formFieldset.nextElementSibling.classList.remove('hide')
       }
     }
   }
