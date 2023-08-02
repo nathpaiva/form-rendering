@@ -4,10 +4,10 @@ describe('prepareRenderInput', () => {
   it('buildForm', () => {
     const form = buildForm({
       reference: null,
-      name: 'Qual será o serviço?',
-      label: 'Qual será o serviço?',
-      placeholder: 'Qual será o serviço?',
-      mask: 'tipo de serviço',
+      name: 'What will be the service?',
+      label: 'What will be the service?',
+      placeholder: 'What will be the service?',
+      mask: 'service type',
       type: 'enumerable',
       required: true,
       allow_multiple_value: true,
