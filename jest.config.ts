@@ -16,7 +16,12 @@ const config: Config = {
       statements: 50,
     },
   },
-  collectCoverageFrom: ['src/**'],
+  collectCoverageFrom: [
+    'src/**',
+    '!src/**/index.ts',
+    '!src/**/types/**',
+    '!src/vite-env.d.ts',
+  ],
 }
 
 export default config
