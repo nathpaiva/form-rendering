@@ -54,7 +54,7 @@ export function inputText({
         type,
       })}
 
-      ${_errorMessage({ message: 'Este campo é requerido.', required })}
+      ${_errorMessage({ message: 'This fields is required.', required })}
     </div>
   `
 }
@@ -88,7 +88,7 @@ export function inputCheckBox({ values, label, required }: RequestFields) {
           .join('')}
       </ul>
 
-      ${_errorMessage({ message: 'Escolha ao menos uma opção.', required })}
+      ${_errorMessage({ message: 'Choose at least one option.', required })}
     </div>
   `
 }
@@ -115,7 +115,7 @@ export function selectField({ required, label, values, mask }: RequestFields) {
             )
             .join('')}
       </select>
-      ${_errorMessage({ message: 'Selecione uma opção.', required })}
+      ${_errorMessage({ message: 'Select one option.', required })}
     </div>
   `
 }

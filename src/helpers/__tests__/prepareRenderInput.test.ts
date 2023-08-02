@@ -13,14 +13,8 @@ describe('prepareRenderInput', () => {
       allow_multiple_value: true,
       allow_custom_value: false,
       values: {
-        Coloração: 'Coloração',
-        Corte: 'Corte',
-        Escova: 'Escova',
-        'Escova progressiva/definitiva': 'Escova progressiva/definitiva',
-        Luzes: 'Luzes',
-        Manicure: 'Manicure',
-        Pedicure: 'Pedicure',
-        Penteado: 'Penteado',
+        Dye: 'Dye',
+        Haircut: 'Haircut',
       },
       _embedded: {
         nested_fields: [],
