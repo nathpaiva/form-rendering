@@ -5,12 +5,13 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --port 2000",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint src/**/*.ts",
     "format": "eslint src/**/*.ts --fix",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "test:ci": "jest --coverage"
   },
   "devDependencies": {
     "@types/jest": "^29.5.3",
