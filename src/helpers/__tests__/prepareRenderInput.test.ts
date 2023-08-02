@@ -1,6 +1,6 @@
 import { fireEvent, screen } from '@testing-library/dom'
 
-import { RequestFields } from '../../types'
+import { RequestFields, UserFields } from '../../types'
 import { buildForm } from '../prepareRenderInput'
 
 describe('prepareRenderInput', () => {
@@ -96,5 +96,59 @@ describe('prepareRenderInput', () => {
 
       expect(select).toHaveValue(index.toString())
     })
+  })
+
+  it('should create section with textarea', () => {
+    const fieldData = {
+      name: 'Additional Information',
+      label: 'Additional Information',
+      type: 'big_text',
+      placeholder: 'Describe what you need',
+      required: false,
+    } satisfies UserFields
+
+    const form = buildForm(fieldData)
+
+    document.body.innerHTML = form
+    const label = screen.getByText(fieldData.label)
+
+    expect(label.tagName).toBe('LABEL')
+    expect(label).toBeTruthy()
+
+    const textarea = screen.getByPlaceholderText(fieldData.placeholder)
+
+    expect(textarea.tagName).toBe('TEXTAREA')
+    expect(textarea).toHaveValue('')
+
+    const textToType = 'my information'
+    fireEvent.change(textarea, { target: { value: textToType } })
+    expect(textarea).toHaveValue(textToType)
+  })
+
+  it('should create section with input text', () => {
+    const fieldData = {
+      name: 'name',
+      label: 'Nome',
+      type: 'small_text',
+      placeholder: '',
+      required: true,
+    } satisfies UserFields
+
+    const form = buildForm(fieldData)
+
+    document.body.innerHTML = form
+    const label = screen.getByText(fieldData.label)
+
+    expect(label.tagName).toBe('LABEL')
+    expect(label).toBeTruthy()
+
+    const textarea = screen.getByPlaceholderText(fieldData.placeholder)
+
+    expect(textarea.tagName).toBe('INPUT')
+    expect(textarea).toHaveValue('')
+
+    const textToType = 'my information'
+    fireEvent.change(textarea, { target: { value: textToType } })
+    expect(textarea).toHaveValue(textToType)
   })
 })
