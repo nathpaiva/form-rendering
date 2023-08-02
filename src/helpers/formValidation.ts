@@ -1,91 +1,108 @@
+function isInputElem(
+  elem: HTMLInputElement | HTMLSelectElement,
+): elem is HTMLInputElement {
+  return elem.tagName === 'INPUT'
+}
+
 export function formValidation(elem: HTMLElement) {
-  const formId = elem.dataset.form
+  const formReference = elem.dataset.form
 
-  if (!formId) return
+  if (!formReference)
+    throw new Error("This element doesn't have a form a reference.")
 
-  const form = document.getElementById(formId)
+  const formFieldset = document.getElementById(formReference)
 
-  if (!form) return
+  if (!formFieldset) throw new Error("This container doesn't exist.")
 
-  const formR = form.getElementsByClassName('form_required')
+  const requiredSections = formFieldset.getElementsByClassName('form_required')
 
-  if (formR.length === 0) return
+  if (!requiredSections.length) return
 
-  let countValid = formR.length
-  for (let x = 0; x < formR.length; x++) {
-    const input: any = formR[x].getElementsByClassName('required')
+  let countValid = requiredSections.length
 
-    if (input.length > 0) {
+  for (let x = 0; x < requiredSections.length; x++) {
+    const requiredSection = requiredSections[x]
+    const inputCollection: HTMLCollectionOf<Element> =
+      requiredSection.getElementsByClassName('required')
+
+    const containerSection =
+      requiredSection.getElementsByClassName('message--error')[0]
+
+    const setStyleToContainerSection = (hasToSetError?: boolean) => {
+      const classValue = hasToSetError ? 'show' : 'hide'
+
+      containerSection.setAttribute(
+        'class',
+        `message message--error ${classValue}`,
+      )
+    }
+
+    if (inputCollection.length > 0) {
       let i = 0
-      let find = false
+      let isInputFilled = false
 
-      while (i <= input.length && !find) {
-        if (input[i].type === 'checkbox' && input[i].checked) {
-          countValid--
-          find = true
-          formR[x]
-            .getElementsByClassName('message--error')[0]
-            .setAttribute('class', 'message message--error')
-        } else if (input[i].type === 'checkbox' && !input[i].checked) {
-          formR[x]
-            .getElementsByClassName('message--error')[0]
-            .setAttribute('class', 'message message--error show')
+      while (i <= inputCollection.length && !isInputFilled) {
+        const input = inputCollection[i] as HTMLInputElement | HTMLSelectElement
+
+        if (isInputElem(input)) {
+          const isInputText =
+            input.type === 'text' ||
+            input.type === 'tel' ||
+            input.type === 'email'
+
+          if (!isInputText && input.checked) {
+            countValid--
+            isInputFilled = true
+            setStyleToContainerSection()
+          }
+
+          if (!isInputText && !input.checked) {
+            setStyleToContainerSection(true)
+          }
+
+          if (isInputText && input.value !== '') {
+            countValid--
+            isInputFilled = true
+            setStyleToContainerSection()
+          }
+
+          if (isInputText && input.value === '') {
+            setStyleToContainerSection(true)
+          }
+        } else {
+          if (input.selectedIndex) {
+            countValid--
+            isInputFilled = true
+            setStyleToContainerSection()
+          }
+
+          if (!input.selectedIndex) {
+            setStyleToContainerSection(true)
+          }
         }
 
-        if (
-          (input[i].type === 'text' ||
-            input[i].type === 'tel' ||
-            input[i].type === 'email') &&
-          input[i].value !== ''
-        ) {
-          countValid--
-          find = true
-          formR[x]
-            .getElementsByClassName('message--error')[0]
-            .setAttribute('class', 'message message--error')
-        } else if (
-          (input[i].type === 'text' ||
-            input[i].type === 'tel' ||
-            input[i].type === 'email') &&
-          input[i].value === ''
-        ) {
-          formR[x]
-            .getElementsByClassName('message--error')[0]
-            .setAttribute('class', 'message message--error show')
-        }
-
-        if (input[i].selectedIndex > 0) {
-          countValid--
-          find = true
-          formR[x]
-            .getElementsByClassName('message--error')[0]
-            .setAttribute('class', 'message message--error')
-        } else if (input[i].selectedIndex === 0) {
-          formR[x]
-            .getElementsByClassName('message--error')[0]
-            .setAttribute('class', 'message message--error show')
-        }
-
-        if (i + 1 === input.length) {
-          find = true
+        if (i + 1 === inputCollection.length) {
+          isInputFilled = true
         }
 
         i++
       }
     }
 
-    if (x + 1 === formR.length && countValid === 0) {
-      if (formId === 'form-for-service') {
-        form.classList.add('forms__content--hide')
-        ;(form.nextSibling?.nextSibling as any)?.classList.remove(
+    if (x + 1 === requiredSections.length && !countValid) {
+      if (formReference === 'form-for-service') {
+        formFieldset.classList.add('forms__content--hide')
+        ;(formFieldset.nextSibling?.nextSibling as any)?.classList.remove(
           'forms__content--hide',
         )
       } else {
-        ;(form.nextSibling?.nextSibling as any)?.classList.remove('hide')
-        form.classList.add('forms__content--hide')
+        ;(formFieldset.nextSibling?.nextSibling as any)?.classList.remove(
+          'hide',
+        )
+        formFieldset.classList.add('forms__content--hide')
       }
 
-      if (formId !== 'form-for-service' || !document) return
+      if (formReference !== 'form-for-service' || !document) return
 
       const tabsItem: any = document.querySelector('.tabs')?.children
 
