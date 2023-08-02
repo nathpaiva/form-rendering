@@ -26,8 +26,7 @@ describe('prepareRenderInput', () => {
         nested_fields: [],
       },
     })
-    console.log(form)
 
-    expect(true).toEqual(true)
+    expect(typeof form).toEqual('string')
   })
 })
