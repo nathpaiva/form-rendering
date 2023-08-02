@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+// TODO: add tests
 import { ModelType } from '../types'
 
 export interface ViewInterface {

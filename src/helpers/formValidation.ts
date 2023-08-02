@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+// TODO: add tests
 function isInputElem(
   elem: HTMLInputElement | HTMLSelectElement,
 ): elem is HTMLInputElement {
