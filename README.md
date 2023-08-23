@@ -1,6 +1,6 @@
 # Form rendering with Vanilla TS
 
-This project has the proposal to show my skills with Vanilla TS, in a simple way, but with a good structure and organization of the code.
+This project has the proposal to show my skills with Typescript, in a simple way, but with a good structure and organization of the code.
 
 The project consists of a form that is rendered dynamically, according to the data that is in the JSON file. There is also a validation of the fields, which is done according to the type of field that is in the JSON file.
 
